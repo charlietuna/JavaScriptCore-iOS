@@ -23,7 +23,15 @@
 #include "autotoolsconfig.h"
 #endif
 
+#define UCONFIG_NO_COLLATION 1
+#define ENABLE_JIT 0
+#define ENABLE_YARR_JIT 0
+
 #include <wtf/Platform.h>
+
+#undef WTF_PLATFORM_MAC
+#undef WTF_USE_PTHREAD_GETSPECIFIC_DIRECT
+#define WTF_USE_PTHREAD_GETSPECIFIC_DIRECT 0
 
 #if !PLATFORM(CHROMIUM) && OS(WINDOWS) && !defined(BUILDING_WX__) && !COMPILER(GCC)
 #if defined(BUILDING_JavaScriptCore) || defined(BUILDING_WTF)
